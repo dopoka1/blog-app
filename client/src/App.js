@@ -5,6 +5,7 @@ import Post from './post';
 import Layout from './layout';
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';
+import RegistrationPage from './pages/RegistrationPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<IndexPage />} />
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegistrationPage />} />
       </Route>
     </Routes>
   );
