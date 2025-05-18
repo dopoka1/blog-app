@@ -1,13 +1,15 @@
+import Header from "./header";
+
 export default function Post() {
     return (
-        <div class="post">
-            <div class="image">
+        <div className="post">
+            <div className="image">
                 <img src="https://sugarspunrun.com/wp-content/uploads/2023/06/Strawberry-cheesecake-recipe-6-of-8.jpg" alt=""/>
             </div>
-            <div class="texts">
+            <div className="texts">
                 <h2>This Is The Best Cheesecake Recipe Ever</h2>
-                <p class="info">
-                    <a href="" class="author">dopoka</a>
+                <p className="info">
+                    <a href="" className="author">dopoka</a>
                     <time>2025-05-15 3:14</time>
                 </p>
                 <p className='summary'>
