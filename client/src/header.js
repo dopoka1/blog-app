@@ -12,23 +12,31 @@ export default function Header() {
       });
     });
   }, []);
-    return (
-      <header>
-        <Link to="/" className="logo">MyBlog</Link>
-        <nav>
-          {username && (
-            <>
-              <Link to="/create">Create new post</Link>
-              <a>Logout</a>
-            </>
-          )}
-          {!username && (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
-          )}
-        </nav>
-      </header>
-    );
+
+  function logout() {
+    fetch('http://localhost:4000/logout', {
+      credentials: 'include',
+      method: 'POST',
+    });
+  }
+
+  return (
+    <header>
+      <Link to="/" className="logo">MyBlog</Link>
+      <nav>
+        {username && (
+          <>
+            <Link to="/create">Create new post</Link>
+            <a onClick={logout}>Logout</a>
+          </>
+        )}
+        {!username && (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
+      </nav>
+    </header>
+  );
 }
