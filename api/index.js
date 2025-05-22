@@ -5,6 +5,7 @@ const User = require("./models/user");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const app = express();
+const cookieParser = require('cookie-parser')
 
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(saltRounds);
@@ -13,8 +14,9 @@ const secret = 'randomstring'
 
 app.use(cors({credentials:true,origin:'http://localhost:3000'}));
 app.use(express.json());
+app.use(cookieParser());
 
-mongoose.connect('mongodb+srv://dopoka:<db_pass>@cluster0.ajahihp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb+srv://dopoka:K00li000@cluster0.ajahihp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 app.post('/register', async (req,res) => {
     const {username,password} = req.body;
     try{
@@ -41,6 +43,15 @@ app.post('/login', async (req,res) => {
     } else {
         res.status(400).json('Invalid credentials');
     }
+});
+
+app.get('/profile', (req,res) => {
+    const {token} = req.cookies;
+    jwt.verify(token, secret, {}, (err,info) => {
+        if (err) throw err;
+        res.json(info);
+    });
+    res.json(req.cookies);
 });
 
 app.listen(4000);
