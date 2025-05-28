@@ -11,7 +11,7 @@ export default function RegistrationPage() {
             body: JSON.stringify({username,password}),
             headers: {'Content-Type':'application/json'},
         })
-        if (response.ok == false) {
+        if (response.ok === false) {
             alert('Registration failed.');
         }
     }
