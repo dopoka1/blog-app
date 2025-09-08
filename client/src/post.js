@@ -1,17 +1,17 @@
 import Header from "./header";
 import { compareAsc, format } from "date-fns";
 
-export default function Post({title,summary,cover,content,createdAt}) {
+export default function Post({title,summary,cover,content,createdAt,author}) {
     return (
       <div className="post">
         <div className='image'>
-          <img src="https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/k%2FPhoto%2FSeries%2F2024-07-how-to-make-perfect-cheesecake%2Fhow-to-make-perfect-cheesecake-319" alt=""/>
+          <img src={'http://localhost:4000/'+cover} alt=""/>
         </div>
         <div className='texts'>
           <h2>{title}</h2>
           <p className="info">
-            <a href="" className="author">dopoka</a>
-            <time datetime="">{format(new Date(createdAt), "yyyy-MM-dd")}</time>
+            <a href="" className="author">{author.username}</a>
+            <time datetime="">{format(new Date(createdAt), "yyyy-MM-dd HH:mm:ss")}</time>
           </p>
           <p className='summary'>
             {summary}

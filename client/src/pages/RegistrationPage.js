@@ -14,6 +14,9 @@ export default function RegistrationPage() {
         if (response.ok === false) {
             alert('Registration failed.');
         }
+        else {
+            alert('Registration success.');
+        }
     }
     return (
         <form className="register" onSubmit={register}>

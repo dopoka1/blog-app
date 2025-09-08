@@ -1,7 +1,7 @@
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import { useState } from 'react';
- import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const modules = {
     toolbar: [
@@ -35,6 +35,7 @@ export default function CreatePost() {
         const response = await fetch('http://localhost:4000/post', {
             method: 'POST',
             body: data,
+            credentials: 'include',
         });
         if (response.ok) {
             setRedirect(true);
