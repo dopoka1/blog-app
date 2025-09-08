@@ -1,5 +1,5 @@
 import Header from "./header";
-// TODO: install date-fns
+import { compareAsc, format } from "date-fns";
 
 export default function Post({title,summary,cover,content,createdAt}) {
     return (
@@ -11,7 +11,7 @@ export default function Post({title,summary,cover,content,createdAt}) {
           <h2>{title}</h2>
           <p className="info">
             <a href="" className="author">dopoka</a>
-            <time datetime="">{createdAt}</time>
+            <time datetime="">{format(new Date(createdAt), "yyyy-MM-dd")}</time>
           </p>
           <p className='summary'>
             {summary}
