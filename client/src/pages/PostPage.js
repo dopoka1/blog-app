@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { format, formatISO9075 } from "date-fns";
 
 export default function PostPage() {
     const [postInfo,setPostInfo] = useState(null);
@@ -17,11 +18,13 @@ export default function PostPage() {
     return (
         <div>
             <div class="post-page">
+                <h1>{postInfo.title}</h1>
+                <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
+                <div class="author">by @{postInfo.author.username}</div>
                 <div class="image">
                     <img src={`http://localhost:4000/${postInfo.cover}`} alt="" />
                 </div>
-                <h1>{postInfo.title}</h1>
-                <div dangerouslySetInnerHTML={{__html:postInfo.content}} />
+                <div className="content" dangerouslySetInnerHTML={{__html:postInfo.content}} />
             </div>
         </div>
     );
